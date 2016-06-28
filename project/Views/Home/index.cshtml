@@ -1,0 +1,26 @@
+﻿@model IEnumerable<project.Models.Lenguajes>
+
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h3>Heiner urena</h3>
+    <p>Estudiante de ing del software</p>
+    <p>Cedral, Ciudad Quesada, San Carlos</p>
+    <table>
+ 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(Model => item.nombre)
+                </td>   
+            </tr>
+        }
+
+    </table>
+
+</div>

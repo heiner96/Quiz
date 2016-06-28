@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Servicio WebMail</title>
+</head>
+<body>
+    <form method="POST">
+        <p>Asunto</p>
+        <input type="text" name="subject" value="Motivo del mensaje" /><br />
+        <p>Mensaje</p>
+        <textarea rows="6" cols="40" name="message">Escriba su mensaje aquí</textarea><br />
+        <input type="submit" value="Enviar" />
+    </form>
+    @{if (eMailSent)
+    {
+    <p>Mensaje enviado</p>
+    }
+    }
+</body>
+</html>
+@{
+    var eMailSent = false;
+    if (IsPost)
+    {
+        eMailSent = true;
+        var eMailSubject = Request["subject"];
+        if (eMailSubject == null)
+        {
+            eMailSubject = "Asunto vacío";
+        }
+        var eMailMessage = Request["message"];
+        if (eMailMessage == null)
+        {
+            eMailMessage = "Mensaje vacío";
+        }
+
+
+        WebMail.SmtpServer = "smtp.live.com";
+        WebMail.SmtpPort = 25;
+        WebMail.EnableSsl = true;
+        WebMail.UserName = "hourenaz@est.utn.ac.cr";
+        WebMail.From = "hourenaz@est.utn.ac.cr";
+        WebMail.Password = "Kehenima!";
+        WebMail.Send(to: "hourenaz@est.utn.ac.cr", subject: eMailSubject, body: eMailMessage);
+    }
+}

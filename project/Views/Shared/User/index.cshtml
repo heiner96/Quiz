@@ -1,0 +1,13 @@
+﻿@model List<project.Models.User>
+@{
+    ViewBag.Title = "index";
+}
+
+<h1>Users</h1>
+<ul>
+    @foreach (var user in Model)
+    {
+        <li>@user.getEmail()</li>
+    }
+</ul>
+

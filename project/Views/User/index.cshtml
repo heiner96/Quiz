@@ -1,0 +1,14 @@
+﻿@model List<project.Models.User>
+@{
+    ViewBag.Title = "index";
+}
+
+<form method="POST" action="User/registrar">
+    <div>
+        <label>Leguaje</label>
+        <input name="Nombre" type="text" />
+    </div>
+    <div>
+        <input type="submit" value="Add" />
+    </div>
+</form>
